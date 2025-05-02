@@ -1,0 +1,84 @@
+class KarakterGame {
+    private String nama;
+    private int kesehatan;
+
+
+    //Constructor
+    KarakterGame(String nama, int kesehatan) {
+        this.nama = nama;
+        this.kesehatan = kesehatan;
+    }
+
+    //Encapsulation Method setter dan getter
+    public void setNama(String nama) {
+        this.nama = nama;
+    }
+
+    public String getNama() {
+        return nama;
+    }
+
+    public int getKesehatan() {
+        return kesehatan;
+    }
+
+    public void setKesehatan(int kesehatan) {
+        this.kesehatan = kesehatan;
+    }
+
+    public void serang(KarakterGame Target) {
+        System.out.println(nama + "Menyerang" + Target.getNama());
+    }
+
+}
+
+    //Inheritance
+    class Pahlawan extends KarakterGame{
+    public Pahlawan(String nama, int kesehatan){
+        super(nama, kesehatan);
+    }
+    @Override
+    public void serang(KarakterGame Target){
+        System.out.println(getNama() + " Menyerang " + Target.getNama() + " Menggunakan Kapak! ");
+        Target.setKesehatan(Target.getKesehatan() - 20);
+        System.out.println("Kesehatan " + Target.getNama() + " Sekkarang " + Target.getKesehatan());
+    }
+
+}
+
+    class enemy extends KarakterGame{
+    public enemy(String nama, int kesehatan){
+        super(nama, kesehatan);
+
+    }
+    @Override
+    public void serang(KarakterGame Target){
+        System.out.println(getNama() + " Menyerang " + Target.getNama() + " menggunakan pedang! ");
+        Target.setKesehatan(Target.getKesehatan() - 15);
+        System.out.println("Kesehatan " + Target.getNama() + " Sekarang " + Target.getKesehatan());
+    }
+
+}
+
+public class Main {
+    public static void main(String[] args){
+        KarakterGame umum = new KarakterGame("Karakter Umum", 100);
+        Pahlawan hero = new Pahlawan("Brimstone", 150);
+        enemy enemy = new enemy("Viper", 200);
+
+        System.out.println("Status awal: ");
+        System.out.println(umum.getNama() + " Memiliki kesehatan : " + umum.getKesehatan());
+        System.out.println(hero.getNama() + " Memiliki kesehatan : " + hero.getKesehatan());
+        System.out.println(enemy.getNama() + " Memiliki kesehatan : " + enemy.getKesehatan());
+
+        System.out.println();
+
+        System.out.println("Pertarungan dimulai: ");
+
+       hero.serang(enemy);
+       enemy.serang(hero);
+
+    }
+
+
+}

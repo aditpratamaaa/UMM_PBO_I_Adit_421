@@ -1,0 +1,24 @@
+import java.util.Scanner;
+
+class Admin{
+    String Username = "admin";
+    String Password = "admin123";
+
+    public void login(){
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("Selamat datang admin!");
+
+        System.out.print("Masukkan username : ");
+        String username = input.nextLine();
+        System.out.print("Masukkan password : ");
+        String password = input.nextLine();
+
+        if (username.equals(Username) && password.equals(Password)){
+            System.out.print("Login admin berhasil!");
+        }else {
+            System.out.print("Username dan password yang anda masukkan salah!");
+        }
+    }
+}
+
